@@ -7,7 +7,7 @@ pkgdesc='Raspberry Pi4 boot EEPROM updater'
 arch=('any')
 url='http://github.com/raspberrypi/rpi-eeprom'
 license=('custom')
-depends=('python' 'raspberrypi-firmware')
+depends=('python' 'raspberrypi-firmware' 'binutils' 'sed' 'grep')
 optdepends=('flashrom')
 makedepends=('python-setuptools')
 options=(!strip)
@@ -21,7 +21,7 @@ backup=(
 )
 sha256sums=('SKIP'
             '17750343aec11614bddac07ce853b6dd5bdc9627e6676cf298e3e75ae3be069f'
-            '27e516d95507324c3b49d55f2b1d30b2a186965a058d6fe767245d7335de6366')
+            '87b6e147cc36404e6bd5fc1f3b7446a359ed0400f187b70d14c4bb1f5cd97ee5')
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
