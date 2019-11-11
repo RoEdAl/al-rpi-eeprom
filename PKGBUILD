@@ -7,9 +7,8 @@ pkgdesc='Raspberry Pi4 boot EEPROM updater'
 arch=('any')
 url='http://github.com/raspberrypi/rpi-eeprom'
 license=('custom')
-depends=('python' 'raspberrypi-firmware' 'binutils' 'sed' 'grep')
+depends=('python' 'python-setuptools' 'raspberrypi-firmware' 'binutils' 'sed' 'grep')
 optdepends=('flashrom')
-makedepends=('python-setuptools')
 options=(!strip)
 source=(
 	'rpi-eeprom::git+https://github.com/raspberrypi/rpi-eeprom.git'
@@ -20,13 +19,8 @@ backup=(
 	etc/default/rpi-eeprom-update
 )
 sha256sums=('SKIP'
-            '17750343aec11614bddac07ce853b6dd5bdc9627e6676cf298e3e75ae3be069f'
+            'e799c62d76e10c380679a8c84659c5203b5fc59f72ea5ed1c9122f36ef5a41c5'
             '87b6e147cc36404e6bd5fc1f3b7446a359ed0400f187b70d14c4bb1f5cd97ee5')
-
-pkgver() {
-	cd ${srcdir}/${pkgname}
-	git log -1 --format=%cd --date=short|tr -d -  
-}
 
 prepare() {
 	mkdir ${srcdir}/rpi_eeprom_py
@@ -36,6 +30,11 @@ prepare() {
 	cp ${srcdir}/${pkgname}/rpi-eeprom-config rpi_eeprom_config/__main__.py
 	sed -i '2d' rpi_eeprom_config/__main__.py
 	cp ${srcdir}/setup.py .
+}
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	git log -1 --format=%cd --date=short|tr -d -
 }
 
 build() {
@@ -61,4 +60,5 @@ package() {
 	mkdir -p ${pkgdir}/usr/bin
 	cp -fv rpi-eeprom-update.sh ${pkgdir}/usr/bin/rpi-eeprom-update
 	ln -s  /usr/lib/firmware/raspberrypi/bootloader/vl805 ${pkgdir}/usr/bin/vl805
+	ln -s /usr/lib/${pkgname}/rpi-eeprom-config ${pkgdir}/usr/bin/rpi-eeprom-config
 }

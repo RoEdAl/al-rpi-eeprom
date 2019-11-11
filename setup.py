@@ -6,7 +6,7 @@ setup(
     packages=['rpi_eeprom_config'],
     entry_points={
         'console_scripts': [
-		'rpi-eeprom-config=rpi_eeprom_config'
+		'rpi-eeprom-config=rpi_eeprom_config.__main__:main'
 	]
     },
 )
