@@ -1,4 +1,4 @@
-#/bin/bash -e
+#!/bin/bash -e
 
 if [ ! -d /opt/vc/bin ]; then
 	echo Please install raspberrypi-firmware package first >&2

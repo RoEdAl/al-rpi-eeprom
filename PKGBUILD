@@ -1,7 +1,7 @@
 # Maintainer: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgname=rpi-eeprom
-pkgver=20191111
+pkgver=20191126
 pkgrel=1
 pkgdesc='Raspberry Pi4 boot EEPROM updater'
 arch=('any')
@@ -20,7 +20,7 @@ backup=(
 )
 sha256sums=('SKIP'
             'e799c62d76e10c380679a8c84659c5203b5fc59f72ea5ed1c9122f36ef5a41c5'
-            '87b6e147cc36404e6bd5fc1f3b7446a359ed0400f187b70d14c4bb1f5cd97ee5')
+            '3270dcbf7c097030bf3f3c350e0c1c53e2c3be8215a5fdee2b72451a676fafe1')
 
 prepare() {
 	mkdir ${srcdir}/rpi_eeprom_py
